@@ -8,7 +8,7 @@ typedef std::string str;
 
 class ClapTrap
 {
-    private:
+    protected:
     str name;
     int hit_points;
     int energy_points;
@@ -23,7 +23,7 @@ class ClapTrap
     ClapTrap(str name);
     ClapTrap &operator=(ClapTrap const &copy);
     ClapTrap(ClapTrap const &copy);
-	~ClapTrap();
+	virtual ~ClapTrap();
 };
 
 #endif
