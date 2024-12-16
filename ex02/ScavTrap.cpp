@@ -31,7 +31,10 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &copy)
         return (*this);
     }
     else
+    {
         std::cout << "Error: ScavTrap copy assignment operation on self" << std::endl;
+        return (*this);
+    }
 }
 
 ScavTrap::ScavTrap(ScavTrap const &copy) : ClapTrap(copy)

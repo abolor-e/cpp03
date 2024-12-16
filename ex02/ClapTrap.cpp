@@ -22,8 +22,10 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &copy)
     	return *this;
 	}
 	else
+	{
 		std::cout << "Error: ClapTrap copy assignment operation on self" << std::endl;
-	
+		return (*this);
+	}
 }
 
 ClapTrap::ClapTrap(ClapTrap const &copy)
@@ -46,18 +48,23 @@ void    ClapTrap::attack(const str& target)
 		std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attack_damage << " points of damage!" << std::endl;  
 		this->energy_points--;
 	}
-	if (this->hit_points == 0)
+	if (this->hit_points <= 0)
 		std::cout << "No hit points left" << std::endl;
-	else if (this->energy_points == 0)
+	else if (this->energy_points <= 0)
 		std::cout << "No energy points left" << std::endl;
 }
 
 void    ClapTrap::takeDamage(unsigned int attackDamage)
 {
-	this->hit_points = this->hit_points - attackDamage;
-	std::cout << "ClapTrap " << this->name << " took " << attackDamage << " amount of damage. Left over with " << this->hit_points << " health!" << std::endl;
-	if (this->hit_points <= 0)
-		std::cout << "You are dead!" << std::endl;
+	if (this->hit_points > 0)
+	{
+		this->hit_points = this->hit_points - attackDamage;
+		std::cout << "ClapTrap " << this->name << " took " << attackDamage << " amount of damage. Left over with " << this->hit_points << " health!" << std::endl;
+		if (this->hit_points <= 0)
+			std::cout << "You are dead!" << std::endl;
+	}
+	else if (this->hit_points <= 0)
+		std::cout << "You are already dead!" << std::endl;	
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)

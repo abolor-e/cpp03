@@ -13,12 +13,16 @@ ClapTrap::ClapTrap(str name) : hit_points(10), energy_points(10), attack_damage(
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &copy)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
     if (this != &copy)
+	{
+		std::cout << "Copy assignment operator called" << std::endl;
         this->hit_points = copy.hit_points;
 		this->energy_points = copy.energy_points;
 		this->attack_damage = copy.attack_damage;
-    return *this;
+    	return *this;
+	}
+	else
+		std::cout << "Error: ClapTrap copy assignment operation on self" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &copy)
